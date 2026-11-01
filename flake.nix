@@ -20,7 +20,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
-          stylix.nixosModules.styix
+          stylix.nixosModules.stylix
           ./hardware-configuration.nix # ln -sf /etc/nixos/hardware-configuration.nix ./hardware-configuration.nix
           ./modules/system.nix
           ./modules/home.nix
