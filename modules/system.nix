@@ -6,6 +6,9 @@
     # auto-optimise-store = true;
   };
 
+   nixpkgs.config.allowUnfreePredicate = pkg:
+     builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
+  
   # boot
   boot.loader = {
     systemd-boot.enable = true;
