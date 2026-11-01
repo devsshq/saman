@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   home-manager = {
     useGlobalPkgs = true;
@@ -6,6 +6,14 @@
     users."devssh" = {
       home.stateVersion = "26.05";
 
+      # Stylix uses base03 (muted) for unfocused borders; Arghavan wants line #2B2B2B
+      wayland.windowManager.sway.config.colors =
+        let line = lib.mkForce "#2B2B2B";
+        in {
+          unfocused = { border = line; childBorder = line; };
+          focusedInactive = { border = line; childBorder = line; };
+        };
+      
       programs.zsh = {
         enable = true;
         autosuggestion.enable = true;
@@ -21,10 +29,10 @@
 
       programs.kitty = {
         enable = true;
-        font = {
-          name = "Maple Mono NF";
-          size = 11;
-        };
+        # font = {
+        #   name = "Maple Mono NF";
+        #   size = 11;
+        # };
       };
 
       programs.helix = {
@@ -49,7 +57,7 @@
           gaps.inner = 6;
           window.border = 2;
           floating.border = 2;
-          fonts = { names = [ "Maple Mono NF" ]; size = 10.0; };
+          # fonts = { names = [ "Maple Mono NF" ]; size = 10.0; };
         };
       };
     };

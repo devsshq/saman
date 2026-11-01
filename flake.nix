@@ -7,18 +7,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inputs.stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, stylix, ... }@inputs:
   {
       nixosConfigurations.dsam = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.home-manager
+          stylix.nixosModules.styix
           ./hardware-configuration.nix # ln -sf /etc/nixos/hardware-configuration.nix ./hardware-configuration.nix
           ./modules/system.nix
           ./modules/home.nix
+          ./modules/theme.nix
           ./profiles/laptop.nix
         ];
       };
