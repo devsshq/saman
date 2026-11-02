@@ -59,6 +59,7 @@
   
   
   # session
+  programs.sway.enable = true;
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -94,8 +95,18 @@
     };
   };
 
+
+  programs.git.enable = true;
+  programs.git.config = {
+    user.name = "devsshq";
+    user.email = "devssh@tuta.io";
+    init.defaultBranch = "main";
+    url."https://github.com/".insteadOf = [ "gh:" "github:" ];
+  };
+
+  
   environment.systemPackages = with pkgs; [
-    git
+    # git
     helix
     mpv
     nnn

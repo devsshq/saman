@@ -5,17 +5,6 @@
     useUserPackages = true;
     users."devssh" = {
       home.stateVersion = "26.05";
-
-      # Stylix uses base03 (muted) for unfocused borders; Arghavan wants line #2B2B2B
-      wayland.windowManager.sway.config = {
-        outputs."Virtual-1".resolution = "1920x1080"
-        colors =
-          let line = lib.mkForce "#2B2B2B";
-          in {
-            unfocused = { border = line; childBorder = line; };
-            focusedInactive = { border = line; childBorder = line; };
-          };
-        };
       
       programs.zsh = {
         enable = true;
@@ -28,7 +17,13 @@
         enableZshIntegration = true;
       };
 
-      programs.git.enable = true;
+      # programs.git.enable = true;
+      # programs.git.config = {
+      #   user.name = "devsshq";
+      #   user.email = "devssh@tuta.io";
+      #   init.defaultBranch = "main";
+      #   url."https://github.com/".insteadOf = [ "gh:" "github:" ];
+      # };
 
       programs.kitty = {
         enable = true;
@@ -60,6 +55,16 @@
           gaps.inner = 6;
           window.border = 2;
           floating.border = 2;
+
+        output."Virtual-1".resolution = "1920x1080";
+
+      # Stylix uses base03 (muted) for unfocused borders; Arghavan wants line #2B2B2B
+        colors =
+          let line = lib.mkForce "#2B2B2B";
+          in {
+            unfocused = { border = line; childBorder = line; };
+            focusedInactive = { border = line; childBorder = line; };
+          };
           # fonts = { names = [ "Maple Mono NF" ]; size = 10.0; };
         };
       };
