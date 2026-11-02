@@ -7,11 +7,14 @@
       home.stateVersion = "26.05";
 
       # Stylix uses base03 (muted) for unfocused borders; Arghavan wants line #2B2B2B
-      wayland.windowManager.sway.config.colors =
-        let line = lib.mkForce "#2B2B2B";
-        in {
-          unfocused = { border = line; childBorder = line; };
-          focusedInactive = { border = line; childBorder = line; };
+      wayland.windowManager.sway.config = {
+        outputs."Virtual-1".resolution = "1920x1080"
+        colors =
+          let line = lib.mkForce "#2B2B2B";
+          in {
+            unfocused = { border = line; childBorder = line; };
+            focusedInactive = { border = line; childBorder = line; };
+          };
         };
       
       programs.zsh = {

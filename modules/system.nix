@@ -6,9 +6,8 @@
     # auto-optimise-store = true;
   };
 
-   nixpkgs.config.allowUnfreePredicate = pkg:
-     builtins.elem (lib.getName pkg) [ "nvidia-x11" "nvidia-settings" ];
-  
+   # nixpkgs.config.allowUnfree = true;
+     
   # boot
   boot.loader = {
     systemd-boot.enable = true;
@@ -20,8 +19,6 @@
   networking.hostName = "saman";
   networking.networkmanager.enable = true;
   time.timeZone = "Asia/Tehran";
-  # i18n.defaultLocale = cfg.host.locale;
-  # console.keyMap = cfg.host.keymap;
 
   # user / privilege
   users.users."devssh" = {
@@ -43,29 +40,25 @@
 
   # graphics
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
 
-  hardware.nvidia = {
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
+  # hardware.nvidia = {
+  #   open = false;
+  #   package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+  #   modesetting.enable = true;
+  #   powerManagement.enable = true;
+  #   prime = {
+  #     offload = {
+  #       enable = true;
+  #       enableOffloadCmd = true;
+  #     };
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:1:0:0";
+  #   };
+  # };
   
   
   # session
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
