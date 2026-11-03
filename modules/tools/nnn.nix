@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.nnn = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.nnn ];
+  flake.modules.homeManager.nnn = { pkgs, ... }: {
+    home.packages = [ pkgs.nnn ];
   };
 }
