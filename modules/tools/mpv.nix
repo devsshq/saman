@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.mpv = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.mpv ];
+  flake.modules.homeManager.mpv = { pkgs, ... }: {
+    home.packages = [ pkgs.mpv ];
   };
 }
