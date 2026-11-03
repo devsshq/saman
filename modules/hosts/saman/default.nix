@@ -23,7 +23,7 @@ in
       # editors
       helix
       # tools
-      git gitui
+      git
       aria2 btop wl-clipboard
     ]);
 
@@ -34,6 +34,7 @@ in
     home-manager.users.${username}.imports = with hm; [
       base
       sway
+      gitui
       zsh starship zoxide pay-respects
       kitty
       helix
