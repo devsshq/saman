@@ -23,7 +23,8 @@ in
       # editors
       helix
       # tools
-      git mpv nnn aria2 btop wl-clipboard
+      git gitui
+      aria2 btop wl-clipboard
     ]);
 
     networking.hostName = "saman";
@@ -36,7 +37,7 @@ in
       zsh starship zoxide pay-respects
       kitty
       helix
-      ripgrep lsd
+      nnn mpv ripgrep lsd bat
     ];
   };
 }
