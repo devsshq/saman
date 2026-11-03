@@ -1,7 +1,7 @@
-{ inputs, lib, ... }:
+{ inputs, lib, config, ... }:
 {
   imports = [ inputs.flake-parts.flakeModules.modules ];
-  systems = [ "x86_64-linux" ];
+  config.systems = [ "x86_64-linux" ];
 
   # shared values, read as config.meta.* by other modules
   options.meta = {
