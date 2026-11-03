@@ -26,6 +26,9 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
     shell = pkgs.zsh;
   };
+
+  # ssh
+  services.sshd.enable = true;
   
   programs.zsh.enable = true;
   security.sudo.enable = false;
@@ -112,5 +115,6 @@
     nnn
     aria2
     wl-clipboard
+    btop
   ];
 }

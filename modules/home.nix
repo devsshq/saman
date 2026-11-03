@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   home-manager = {
     useGlobalPkgs = true;
@@ -10,12 +10,39 @@
         enable = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
+        shellAliases = {
+          grep = "rg";
+          ls = "lsd";
+          l = "lsd -ahl";
+          lsa = "lsd -ahl";
+          vi = "hx";
+          vim = "hx";
+          vis = "hx";
+        };
+        history = {
+          size = 10000;
+          save = 10000;
+          share = true;
+          # path = "${config.xdg.dataHome}/zsh/history";
+        };
+        historySubstringSearch = {
+          enable = true;
+          searchUpKey = [ "^[[A" ];
+          searchDownKey = [ "^[[B" ];
+        };
       };
 
+      programs.zoxide = { enable = true; options = [ "--cmd" "cd" ]; };
       programs.starship = {
         enable = true;
         enableZshIntegration = true;
       };
+      programs.pay-respects.enable = true;
+
+      home.sessionVariables.EDITOR = "hx";
+      home.packages = with pkgs; [ ripgrep lsd helix ];
+
+      
 
       # programs.git.enable = true;
       # programs.git.config = {
