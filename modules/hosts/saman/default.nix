@@ -34,6 +34,7 @@ in
 
     home-manager.users.${username}.imports = with hm; [
       base
+      nix-search-tv
       sway waybar
       gitui
       zsh starship zoxide pay-respects
