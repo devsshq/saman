@@ -24,7 +24,7 @@
         base0E = "BE55E6"; # ANSI magenta
         base0F = "6E9BC4"; # info
       };
-      image = ../../assets/wall.png;
+      image = "${inputs.arghavan.packages.${pkgs.stdenv.hostPlatform.system}.wallpaper}/share/backgrounds/arghavan/wall-small-falcon-1080p.png";
       fonts = {
         monospace = { package = pkgs.maple-mono.NF; name = "Maple Mono NF"; };
         sansSerif = { package = pkgs.ibm-plex; name = "IBM Plex Sans"; };

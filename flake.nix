@@ -13,6 +13,12 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Arghavan themes by me ;3
+    arghavan = {
+      url = "github:devsshq/Arghavan";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
