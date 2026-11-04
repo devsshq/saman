@@ -3,7 +3,7 @@
     home.packages = with pkgs; [ pamixer brightnessctl ];
 
     # Stylix's generated CSS would merge into yours
-    # stylix.targets.waybar.enable = false;
+    stylix.targets.waybar.enable = false;
 
     # replace sway's default swaybar
     wayland.windowManager.sway.config.bars = [ ];
@@ -11,7 +11,7 @@
     programs.waybar = {
       enable = true;
       systemd.enable = true;
-      # style = ./waybar.css;
+      style = ./waybar.css;
 
       settings.mainBar = {
         height = 36;
