@@ -14,6 +14,7 @@ in
     imports = [ ./_hardware-configuration.nix ] ++ (with nixos; [
       # system
       nix boot networking ssh doas users
+      nh
       # hardware
       graphics pipewire power
       # desktop
@@ -33,7 +34,7 @@ in
 
     home-manager.users.${username}.imports = with hm; [
       base
-      sway
+      sway waybar
       gitui
       zsh starship zoxide pay-respects
       kitty
