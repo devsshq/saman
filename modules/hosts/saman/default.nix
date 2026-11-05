@@ -19,6 +19,7 @@ in
       graphics pipewire power
       # desktop
       sway sddm portal fonts stylix
+      mitm-ca
       # shell
       zsh
       # editors
@@ -36,6 +37,7 @@ in
       base
       nix-search-tv
       sway waybar
+      librewolf v2rayn mitm-ca
       gitui
       zsh starship zoxide pay-respects
       kitty
