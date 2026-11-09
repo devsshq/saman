@@ -60,7 +60,7 @@
               addons.foxyproxy-standard
               addons.stylus
               addons.spoof-timezone
-              addons.user-agent-switcher-and-manager
+              # addons.user-agent-switcher-and-manager
               addons.sidebery
               addons.darkreader
               addons.new-tab-override
