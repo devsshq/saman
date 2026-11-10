@@ -32,9 +32,10 @@ in
       # replace sway's default swaybar
       wayland.windowManager.sway.config.bars = [ ];
 
-      wayland.windowManager.sway.config.keybindings = {
+      # mkOptionDefault keeps the default sway keybindings; a plain definition would replace them all
+      wayland.windowManager.sway.config.keybindings = lib.mkOptionDefault {
         # replaces the default swaynag exit prompt
-        "Mod4+Shift+e" = "exec qs ipc -c saman call session confirmExit";
+        "Mod4+Shift+e" = lib.mkForce "exec qs ipc -c saman call session confirmExit";
         "Mod4+Shift+p" = "exec qs ipc -c saman call session menu";
       };
 
@@ -44,5 +45,8 @@ in
         configs.saman = shell;
         activeConfig = "saman";
       };
+
+      # stop and start with the session, so a new login gets a fresh instance
+      systemd.user.services.quickshell.Unit.PartOf = [ "graphical-session.target" ];
     };
 }
