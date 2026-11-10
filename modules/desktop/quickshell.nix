@@ -32,6 +32,12 @@ in
       # replace sway's default swaybar
       wayland.windowManager.sway.config.bars = [ ];
 
+      wayland.windowManager.sway.config.keybindings = {
+        # replaces the default swaynag exit prompt
+        "Mod4+Shift+e" = "exec qs ipc -c saman call session confirmExit";
+        "Mod4+Shift+p" = "exec qs ipc -c saman call session menu";
+      };
+
       programs.quickshell = {
         enable = true;
         systemd.enable = true;

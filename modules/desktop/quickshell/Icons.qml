@@ -19,4 +19,7 @@ Singleton {
         g(0xF007F), g(0xF0080), g(0xF0081), g(0xF0082), g(0xF0079)
     ]
     readonly property string batteryCharging: g(0xF0084)
+    readonly property string power: g(0xF0425)
+    readonly property string restart: g(0xF0709)
+    readonly property string logout: g(0xF0343)
 }

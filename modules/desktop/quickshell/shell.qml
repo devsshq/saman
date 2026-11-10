@@ -5,4 +5,6 @@ ShellRoot {
         model: Quickshell.screens
         delegate: Bar {}
     }
+
+    Session {}
 }
