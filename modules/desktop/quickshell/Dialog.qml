@@ -61,35 +61,17 @@ Overlay {
             Repeater {
                 model: [root.cancelText, root.confirmText]
 
-                delegate: Rectangle {
+                delegate: Button {
                     id: button
                     required property int index
                     required property string modelData
 
-                    readonly property bool active: root.selected === index
+                    text: modelData
+                    active: root.selected === index
+                    tone: (index === 1 && root.danger) ? Theme.error : Theme.accent
 
-                    width: label.implicitWidth + 32
-                    height: 32
-                    color: active ? Theme.accentDim : "transparent"
-                    border.width: 2
-                    border.color: !active ? Theme.line
-                                : (index === 1 && root.danger) ? Theme.error : Theme.accent
-
-                    Text {
-                        id: label
-                        anchors.centerIn: parent
-                        text: button.modelData
-                        color: button.active ? Theme.fg : Theme.fgDim
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onEntered: root.selected = button.index
-                        onClicked: button.index === 1 ? root.accepted() : root.dismissed()
-                    }
+                    onHovered: root.selected = index
+                    onClicked: index === 1 ? root.accepted() : root.dismissed()
                 }
             }
         }

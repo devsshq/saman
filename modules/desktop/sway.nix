@@ -1,6 +1,7 @@
 {
   flake.modules.nixos.sway = {
     programs.sway.enable = true;
+    security.polkit.enable = true; # authentication requests for the Quickshell agent
   };
 
   flake.modules.homeManager.sway = { lib, ... }: {

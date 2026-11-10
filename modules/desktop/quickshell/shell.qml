@@ -7,4 +7,5 @@ ShellRoot {
     }
 
     Session {}
+    Polkit {}
 }
