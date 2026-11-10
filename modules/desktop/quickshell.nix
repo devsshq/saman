@@ -46,7 +46,18 @@ in
         activeConfig = "saman";
       };
 
-      # stop and start with the session, so a new login gets a fresh instance
+      # The default list plus a restart of quickshell. The user manager survives a
+      # logout and graphical-session.target can stay active, so the unit's
+      # WantedBy alone does not start quickshell again on the next login.
+      wayland.windowManager.sway.systemd.extraCommands = [
+        "systemctl --user reset-failed"
+        "systemctl --user start sway-session.target"
+        "systemctl --user restart quickshell.service"
+        "swaymsg -mt subscribe '[]' || true"
+        "systemctl --user stop sway-session.target"
+      ];
+
+      # stop with the session
       systemd.user.services.quickshell.Unit.PartOf = [ "graphical-session.target" ];
     };
 }
